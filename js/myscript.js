@@ -78,7 +78,6 @@ document.getElementsByClassName("item")[0].classList.add("active");
 thumbsContainer.innerHTML = thumbElement;
 
 document.getElementsByClassName("thumb")[0].classList.add("active");
-document.getElementsByClassName("thumb")[0].classList.add("bordo");
 
 let posizioneClick = 0;
 
