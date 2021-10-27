@@ -35,10 +35,6 @@ let itemsContainer = document.querySelector(".items");
 
 let thumbsContainer = document.querySelector(".thumbs");
 
-const bottoneIndietro = document.querySelector(".indietro");
-
-const bottoneAvanti = document.querySelector(".avanti");
-
 /* creiamo delle stringhe vuote che andranno riempite successivamente mediante i cicli */
 
 let itemElement = "";
@@ -75,21 +71,32 @@ for (let i = 0; i < items.length; i++){
 
 /* creaiamo delle variabili per stampare il tutto su html */
 
-itemsContainer.innerHTML = itemElement;
+itemsContainer.innerHTML += itemElement;
 
 document.getElementsByClassName("item")[0].classList.add("active");
 
 thumbsContainer.innerHTML = thumbElement;
 
 document.getElementsByClassName("thumb")[0].classList.add("active");
+document.getElementsByClassName("thumb")[0].classList.add("bordo");
+
+let posizioneClick = 0;
 
 /* creiamo un'azione di click per fare in modo che andando alla successiva immagine essa si presenti sullo schermo */
 
-bottoneAvanti.addEventListener ("click",
+document.querySelector(".avanti").addEventListener("click",
 
     function(){
 
+        posizioneClick = posizioneClick + 1;
 
+        document.getElementsByClassName("item")[posizioneClick].classList.add("active");
+
+        document.querySelector(".item.active").classList.remove("active");
+
+        document.getElementsByClassName("thumb")[posizioneClick].classList.add("active");
+
+        document.querySelector(".thumb.active").classList.remove("active");
 
     }
 
@@ -97,11 +104,19 @@ bottoneAvanti.addEventListener ("click",
 
 /* facciamo la stessa identica cosa ma per andare all'immagine precedente */
 
-bottoneIndietro.addEventListener ("click",
+document.querySelector(".indietro").addEventListener("click",
 
     function(){
 
-        
+        posizioneClick = posizioneClick - 1;
+
+        document.getElementsByClassName("item")[posizioneClick].classList.add("active");
+
+        document.querySelector(".item.active").classList.remove("active");
+
+        document.getElementsByClassName("thumb")[posizioneClick].classList.add("active");
+
+        document.querySelector(".thumb.active").classList.remove("active");
 
     }
 
