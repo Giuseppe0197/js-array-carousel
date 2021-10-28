@@ -71,7 +71,7 @@ for (let i = 0; i < items.length; i++){
 
 /* creaiamo delle variabili per stampare il tutto su html */
 
-itemsContainer.innerHTML += itemElement;
+itemsContainer.innerHTML = itemElement;
 
 document.getElementsByClassName("item")[0].classList.add("active");
 
@@ -87,7 +87,7 @@ document.querySelector(".avanti").addEventListener("click",
 
     function(){
 
-        posizioneClick = posizioneClick + 1;
+        ++posizioneClick;
 
         document.getElementsByClassName("item")[posizioneClick].classList.add("active");
 
@@ -107,15 +107,15 @@ document.querySelector(".indietro").addEventListener("click",
 
     function(){
 
-        posizioneClick = posizioneClick - 1;
+        --posizioneClick;
 
-        document.getElementsByClassName("item")[posizioneClick].classList.add("active");
+        document.querySelector(".thumb.active").classList.remove("active");
 
         document.querySelector(".item.active").classList.remove("active");
 
-        document.getElementsByClassName("thumb")[posizioneClick].classList.add("active");
+        document.getElementsByClassName("item")[posizioneClick].classList.add("active");
 
-        document.querySelector(".thumb.active").classList.remove("active");
+        document.getElementsByClassName("thumb")[posizioneClick].classList.add("active");
 
     }
 
