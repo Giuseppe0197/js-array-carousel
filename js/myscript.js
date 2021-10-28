@@ -75,7 +75,7 @@ itemsContainer.innerHTML = itemElement;
 
 document.getElementsByClassName("item")[0].classList.add("active");
 
-thumbsContainer.innerHTML = thumbElement;
+thumbsContainer.innerHTML += thumbElement;
 
 document.getElementsByClassName("thumb")[0].classList.add("active");
 
@@ -87,15 +87,23 @@ document.querySelector(".avanti").addEventListener("click",
 
     function(){
 
-        ++posizioneClick;
+        if (posizioneClick < items.length -1){
 
-        document.getElementsByClassName("item")[posizioneClick].classList.add("active");
+            ++posizioneClick;
+
+        } else {
+
+            posizioneClick = 0;
+
+        }
 
         document.querySelector(".item.active").classList.remove("active");
 
-        document.getElementsByClassName("thumb")[posizioneClick].classList.add("active");
+        document.getElementsByClassName("item")[posizioneClick].classList.add("active");
 
         document.querySelector(".thumb.active").classList.remove("active");
+
+        document.getElementsByClassName("thumb")[posizioneClick].classList.add("active");
 
     }
 
@@ -107,7 +115,15 @@ document.querySelector(".indietro").addEventListener("click",
 
     function(){
 
-        --posizioneClick;
+        if (posizioneClick === 0){
+
+            posizioneClick = items.length -1;
+
+        } else {
+
+            --posizioneClick;
+
+        }
 
         document.querySelector(".thumb.active").classList.remove("active");
 
